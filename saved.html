@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Giphy App</title>
+  <link rel="stylesheet" href="./assets/css/reset.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+  <link rel="stylesheet" href="./assets/css/saved.css">
+</head>
+<body>
+  <!-- <div class="container-sm">
+    <div class="row">
+      <div class="col">
+        <div class="card" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title">Search for a gif</h5>
+            <p class="card-text">
+              <form>
+                <label for="name">gif</label>
+                <input type="text" name="name" id="name">
+                <button id="search">Search</button>
+              </form>
+            </p>
+          </div>
+        </div>       
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div id="gifs"></div>
+      </div>
+    </div> 
+    <div class="row">
+      <div id="appendGif" class="card-group">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content.
+              This content is a little bit longer.</p>
+            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script>
+    let apiKey = "Y83aIFrxFBZ0o4llJ1rN0t9mbUE6sEbV"
+    
+    document.getElementById('search').addEventListener('click', event => {
+      event.preventDefault()
+
+      const name = document.getElementById('name').value
+
+      axios.get(`https://api.giphy.com/v1/gifs/search?api_key=Y83aIFrxFBZ0o4llJ1rN0t9mbUE6sEbV&limit=20&q=${name}&rating=g`)
+        .then(res => {
+          const gifs = res.data
+
+          console.log(gifs)
+          for (let i = 0; i < 20; i++) {
+            let gifElem = document.createElement('div')
+            gifElem.className = "card"
+            gifElem.innerHTML = `
+            <img src="${gifs.data[i].images.original.url}" alt="${gifs.data[i].title}">
+            <div class="card-body">
+              <h5 class="card-title">${gifs.data[i].title}</h5>
+            </div>`
+            document.getElementById('appendGif').append(gifElem)
+            document.getElementById('name').value = ''
+          }
+        })
+      .catch(err => console.error(err))
+    })
+  </script> -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">My GIFs</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="saved.html">Saved</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <!-- Large display for content -->
+    <!-- Add "gifDisp" class to edit styles in CSS -->
+    <div class="row bg-light p-5 rounded-lg m-3 gifDisp">
+      <!-- Title of app -->
+      <h1 class="display-4">My GIFs</h1>
+      <!-- Description of app -->
+      <p class="lead">Here you will see all the gifs you have saved!</p>
+      <hr class="my-4">
+    </div>
+    <!-- Give row id of gifs to display saved gifs data -->
+    <div id="gifs" class="row bg-light p-5 rounded-lg m-3 gifDisp">
+      <!-- Add message to indicate what belongs in the area -->
+      <h1>No GIFs to display</h1>
+    </div>
+  </div>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous">
+  </script>
+  <!-- axios cdn placed before our js -->
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="./assets/js/saved.js"></script>
+</body>
+</html>
